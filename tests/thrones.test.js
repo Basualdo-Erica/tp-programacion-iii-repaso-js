@@ -1,1 +1,1 @@
-//Pruebas para la API de Thrones
+//Pruebas para la API de Thrones.

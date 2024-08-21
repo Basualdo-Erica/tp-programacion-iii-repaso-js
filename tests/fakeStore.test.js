@@ -1,1 +1,1 @@
-//Pruebas para la API de FakeStore
+//Pruebas para la API de FakeStore.
