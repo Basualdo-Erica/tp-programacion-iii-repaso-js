@@ -1,0 +1,23 @@
+{
+  "name": "tp-programacion-iii-repaso",
+  "version": "1.0.0",
+  "description": "## Descripción",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Basualdo-Erica/tp-programacion-iii-repaso-js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Basualdo-Erica/tp-programacion-iii-repaso-js/issues"
+  },
+  "homepage": "https://github.com/Basualdo-Erica/tp-programacion-iii-repaso-js#readme"
+}
