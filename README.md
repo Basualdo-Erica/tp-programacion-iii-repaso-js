@@ -6,6 +6,7 @@ Este proyecto es parte del Trabajo Práctico de Programación III
 -Basualdo Erica Lucia
 -Andrea Natalia Segovia
 -Anabella Ventavoli
+-Lamine Mechedou
 
 ## Estructura
 
