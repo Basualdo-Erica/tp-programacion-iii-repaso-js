@@ -19,6 +19,8 @@
   "bugs": {
     "url": "https://github.com/Basualdo-Erica/tp-programacion-iii-repaso-js/issues"
   },
-  "homepage": "https://github.com/Basualdo-Erica/tp-programacion-iii-repaso-js#readme"
+  "homepage": "https://github.com/Basualdo-Erica/tp-programacion-iii-repaso-js#readme",
+  "dependencies": {
+    "node-fetch": "^2.7.0"
+  }
 }
-
