@@ -1,1 +1,0 @@
-//Funciones para interactuar con Thrones API
