@@ -20,7 +20,15 @@ const { obtenerTodosLosProductos, numeroLimitadoProductos, agregarProducto } = r
     console.log('nuevo producto agregado')
     await agregarProducto(nuevoProducto);
 
-    await numeroLimitadoProductos(5); 
+    await numeroLimitadoProductos(5);
+    const productId = 1;
+    console.log(`Buscando producto con ID ${productId}...`);
+    await fetchProductById(productId);
+
+
+    console.log(`Eliminando producto con ID ${productId}...`);
+    await deleteProduct(productId);
+})();
 }) (); 
 
 
