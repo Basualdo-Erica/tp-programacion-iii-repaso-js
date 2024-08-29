@@ -47,25 +47,26 @@ async function agregarProducto(nuevoProducto) {
         console.error(error);
     }
 }
-async function ProductById(id) {
+async function fetchProductById(id) {
     try {
-        const response = await fetch(`${('https://fakestoreapi.com/products')/${id}`);
+        const response = await fetch(`https://fakestoreapi.com/products/${id}`);
 
         if (!response.ok) {
             throw new Error(`Error en la solicitud: ${response.statusText}`);
         }
 
         const data = await response.json();
+        console.log('Producto encontrado:', data);
         return data;
     } catch (error) {
         console.error('Error al recuperar producto por ID:', error);
         return null;
     }
-};
+}
 
 async function deleteProduct(id) {
     try {
-        const response = await fetch(`('https://fakestoreapi.com/products')/${id}`, {
+        const response = await fetch(`https://fakestoreapi.com/products/${id}`, {
             method: 'DELETE'
         });
 
@@ -73,19 +74,18 @@ async function deleteProduct(id) {
             throw new Error(`Error en la solicitud: ${response.statusText}`);
         }
 
+        console.log('Producto eliminado');
         return response.ok ? 'Producto eliminado' : 'Error al eliminar producto';
     } catch (error) {
         console.error('Error al eliminar producto:', error);
         return null;
     }
-};
-
-
+}
 
 module.exports = {
     obtenerTodosLosProductos,  
     numeroLimitadoProductos,
     agregarProducto,
-    ProductById, 
+    fetchProductById, 
     deleteProduct
 };
