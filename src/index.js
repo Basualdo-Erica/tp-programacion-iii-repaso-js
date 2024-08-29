@@ -1,7 +1,7 @@
 //Archivo principal para probar los ejercicios
 
 //fakeStore
-const { obtenerTodosLosProductos, numeroLimitadoProductos, agregarProducto } = require('./api/fakeStore');
+const { obtenerTodosLosProductos, numeroLimitadoProductos, agregarProducto, fetchProductById, deleteProduct } = require('./api/fakeStore');
 
 (async () => {
     console.log('obteniendo todos los productos...')
