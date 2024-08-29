@@ -86,6 +86,6 @@ module.exports = {
     obtenerTodosLosProductos,  
     numeroLimitadoProductos,
     agregarProducto,
-    fetchProductById, 
+    ProductById, 
     deleteProduct
 };
