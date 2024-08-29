@@ -47,9 +47,45 @@ async function agregarProducto(nuevoProducto) {
         console.error(error);
     }
 }
+async function ProductById(id) {
+    try {
+        const response = await fetch(`${BASE_URL}/${id}`);
+
+        if (!response.ok) {
+            throw new Error(`Error en la solicitud: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error al recuperar producto por ID:', error);
+        return null;
+    }
+};
+
+async function deleteProduct(id) {
+    try {
+        const response = await fetch(`${BASE_URL}/${id}`, {
+            method: 'DELETE'
+        });
+
+        if (!response.ok) {
+            throw new Error(`Error en la solicitud: ${response.statusText}`);
+        }
+
+        return response.ok ? 'Producto eliminado' : 'Error al eliminar producto';
+    } catch (error) {
+        console.error('Error al eliminar producto:', error);
+        return null;
+    }
+};
+
+
 
 module.exports = {
     obtenerTodosLosProductos,  
     numeroLimitadoProductos,
-    agregarProducto
+    agregarProducto,
+    fetchProductById, 
+    deleteProduct
 };
