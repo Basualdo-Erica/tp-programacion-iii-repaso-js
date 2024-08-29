@@ -49,7 +49,7 @@ async function agregarProducto(nuevoProducto) {
 }
 async function ProductById(id) {
     try {
-        const response = await fetch(`${BASE_URL}/${id}`);
+        const response = await fetch(`${('https://fakestoreapi.com/products')/${id}`);
 
         if (!response.ok) {
             throw new Error(`Error en la solicitud: ${response.statusText}`);
@@ -65,7 +65,7 @@ async function ProductById(id) {
 
 async function deleteProduct(id) {
     try {
-        const response = await fetch(`${BASE_URL}/${id}`, {
+        const response = await fetch(`('https://fakestoreapi.com/products')/${id}`, {
             method: 'DELETE'
         });
 
