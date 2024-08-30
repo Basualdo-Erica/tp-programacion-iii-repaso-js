@@ -37,6 +37,7 @@ async function fetchCharacter(nombre, apellido) {
             throw new Error(response.statusText);
         }
         const charachter = await response.json();
+        console.log("Muestro un personaje en particular:");
         formatearCharacter(charachter);
     }
         catch (error) {
@@ -47,6 +48,7 @@ async function fetchCharacter(nombre, apellido) {
 //punto2
 async function showCharacters() {
     const characters = await fetchCharacters();
+    console.log("A continuación se muestran todos los personajes: \n")
     if (characters) {
         console.log(characters); 
     } else {
@@ -60,7 +62,7 @@ async function saveJson() {
     if (characters) {
         const json = JSON.stringify(characters, null, 2);
         fs.writeFileSync('./data/personajes.json', json);
-        console.log('Archivo personajes.json creado.');
+        console.log('\nSe creó el archivo personajes.json en la carpeta data.');
         } else {
             console.log('No se pudieron obtener los personajes.');
         }
@@ -75,7 +77,7 @@ function readLocalFile() {
 //punto 4a 
 function  familyFilter(family) {
     let familyList = readLocalFile().filter(personaje => personaje.family == family);
-    console.log(`La familia ${family} está compuesta por: `)
+    console.log(`La familia ${family} está compuesta por:  \n`);
     familyList.map(personaje =>
         formatearCharacter(personaje)
     )
@@ -88,12 +90,11 @@ function addCharacter (character) {
     character.id = newId;
 
     file.push(character); //agrego el personaje nuevo
-    console.log(`Se agregó el personaje ${character.fullName}`);
+    console.log(`Se agregó el personaje ${character.fullName}. Sus datos son los siguientes: \n`);
     formatearCharacter(character);
     fs.unlinkSync('./data/personajes.json'); //elimino el archivo
     const newFile = JSON.stringify(file, null, 2); //convierto a json 
     fs.writeFileSync('./data/personajes.json', newFile); //escribo el archivo nuevo que tiene mi personaje agregado
-    console.log('Archivo actualizado.');
 };
 
 //punto 4c 
@@ -102,7 +103,8 @@ function filterById() {
     const newFile = JSON.stringify(hasta25, null, 2); //convierto a json 
     fs.unlinkSync('./data/personajes.json'); //elimino el original
     fs.writeFileSync('./data/personajes.json', newFile); //guardo archivo con personajes id menores a 25
-    console.log('Archivo personajes.json actualizado.');
+    console.log('Se filtraron los personajes con ID menores a 25 y se actualizó el archivo personajes.json.');
+    console.log(readLocalFile());
 };
 
 module.exports = {

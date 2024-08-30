@@ -41,6 +41,7 @@ async function agregarProducto(nuevoProducto) {
             throw new Error(`Error al agregar un nuevo producto: ${respuesta.status}`);
         }
         const productoAgregado = await respuesta.json();
+        console.log('Nuevo producto agregado: \n');
         console.log('Producto agregado:', productoAgregado);
         return productoAgregado;
     } catch (error) {
@@ -74,7 +75,7 @@ async function deleteProduct(id) {
             throw new Error(`Error en la solicitud: ${response.statusText}`);
         }
 
-        console.log('Producto eliminado');
+        console.log('Producto eliminado. \n');
         return response.ok ? 'Producto eliminado' : 'Error al eliminar producto';
     } catch (error) {
         console.error('Error al eliminar producto:', error);
