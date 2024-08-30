@@ -30,8 +30,8 @@ const { obtenerTodosLosProductos, numeroLimitadoProductos, agregarProducto, fetc
     await deleteProduct(productId);
 })();
 
-
 //Pruebas para la API de Thrones.
+//Ir probando las funciones punto por punto.
 const { fetchCharacter, showCharacters, saveJson, familyFilter, addCharacter, filterById } = require('./api/thrones');
 
 //punto 1 - muestra los detalles de un personaje en particular
