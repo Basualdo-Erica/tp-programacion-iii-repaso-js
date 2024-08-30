@@ -59,7 +59,7 @@ async function saveJson() {
     const characters = await fetchCharacters();
     if (characters) {
         const json = JSON.stringify(characters, null, 2);
-        fs.writeFileSync('./personajes.json', json);
+        fs.writeFileSync('../data/personajes.json', json);
         console.log('Archivo personajes.json creado.');
         } else {
             console.log('No se pudieron obtener los personajes.');
@@ -68,7 +68,7 @@ async function saveJson() {
 
 //punto 4 
 function readLocalFile() {
-    const file = JSON.parse(fs.readFileSync('./personajes.json', 'utf-8'));
+    const file = JSON.parse(fs.readFileSync('../data/personajes.json', 'utf-8'));
     return file;
 }
 
@@ -82,11 +82,8 @@ function  familyFilter(family) {
 }
 
 //punto 4b 
-function addCharacter () {
-    const file = readLocalFile();
-    let newId = file.length;
-    const newCharacter = {
-    "id": newId,
+const newCharacter = {
+    "id": 0,
     "firstName": "James",
     "lastName": "Fraser",
     "fullName": "James Alexander Malcolm MacKenzie Fraser",
@@ -96,12 +93,17 @@ function addCharacter () {
     "imageUrl": "https://ar.pinterest.com/pin/7740630590310472/"
     }
 
-    file.push(newCharacter); //agrego el personaje nuevo
-    console.log(`Se agregó el personaje ${newCharacter.fullName}`);
-    formatearCharacter(newCharacter);
-    fs.unlinkSync('./personajes.json'); //elimino el archivo
+function addCharacter (character) {
+    const file = readLocalFile();
+    let newId = file.length;
+    character.id = newId;
+
+    file.push(character); //agrego el personaje nuevo
+    console.log(`Se agregó el personaje ${character.fullName}`);
+    formatearCharacter(character);
+    fs.unlinkSync('../data/personajes.json'); //elimino el archivo
     const newFile = JSON.stringify(file, null, 2); //convierto a json 
-    fs.writeFileSync('./personajes.json', newFile); //escribo el archivo nuevo que tiene mi personaje agregado
+    fs.writeFileSync('../data/personajes.json', newFile); //escribo el archivo nuevo que tiene mi personaje agregado
     console.log('Archivo actualizado.');
 }
 
@@ -109,8 +111,8 @@ function addCharacter () {
 function filterById() {
     let hasta25 = readLocalFile().filter(personaje => personaje.id <= 25); //flitro los personajes con id hasta 25
     const newFile = JSON.stringify(hasta25, null, 2); //convierto a json 
-    fs.unlinkSync('./personajes.json'); //elimino el original
-    fs.writeFileSync('./personajes.json', newFile); //guardo archivo con personajes id menores a 25
+    fs.unlinkSync('../data/personajes.json'); //elimino el original
+    fs.writeFileSync('../data/personajes.json', newFile); //guardo archivo con personajes id menores a 25
     console.log('Archivo personajes.json actualizado.');
 }
 
@@ -130,7 +132,7 @@ const family = "House Stark";
 familyFilter(family);
 
 //punto 4b - Agregar personaje y actualizar
-addCharacter();
+addCharacter(newCharacter);
 
 //punto 4c - Filtrar personajes por ID y actualizar
 filterById();
